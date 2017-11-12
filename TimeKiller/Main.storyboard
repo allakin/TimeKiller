@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pst-0P-TAZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sUw-xz-P4T">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,7 +17,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Jpr-Qj-nGB">
             <objects>
-                <navigationController navigationBarHidden="YES" id="sUw-xz-P4T" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StartNavigationViewController" navigationBarHidden="YES" id="sUw-xz-P4T" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qb4-vQ-KgQ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -329,10 +329,10 @@
             </objects>
             <point key="canvasLocation" x="1723.943661971831" y="-236.25"/>
         </scene>
-        <!--Game Over View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="R34-S8-n2F">
             <objects>
-                <viewController storyboardIdentifier="GameOverViewController" id="pst-0P-TAZ" customClass="GameOverViewController" customModule="TimeKiller" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultViewController" id="pst-0P-TAZ" customClass="ResultViewController" customModule="TimeKiller" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jno-0w-hiL">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,7 +340,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hc-d8-TmX">
                                 <rect key="frame" x="5" y="5" width="558" height="310"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Car-IK-och">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Car-IK-och">
                                         <rect key="frame" x="8" y="30" width="542" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="SFp-5e-cEx"/>
@@ -349,7 +349,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbO-8w-Zwd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbO-8w-Zwd">
                                         <rect key="frame" x="8" y="110" width="542" height="112"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -383,7 +383,7 @@
                                             <constraint firstAttribute="height" constant="40" id="ZBy-q2-HqT"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qid-q8-B43">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qid-q8-B43">
                                         <rect key="frame" x="8" y="68" width="542" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="FJO-OG-qb9"/>
@@ -412,7 +412,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="i8d-Kh-wBM" firstAttribute="bottom" secondItem="5hc-d8-TmX" secondAttribute="bottom" constant="5" id="0OO-Zv-6Lk"/>
                             <constraint firstItem="5hc-d8-TmX" firstAttribute="top" secondItem="i8d-Kh-wBM" secondAttribute="top" constant="5" id="4fL-2w-ezu"/>
@@ -423,6 +423,7 @@
                     </view>
                     <connections>
                         <outlet property="adviceLabel" destination="kbO-8w-Zwd" id="TGf-xc-7bO"/>
+                        <outlet property="bgView" destination="5hc-d8-TmX" id="0iU-Hz-aNv"/>
                         <outlet property="timeSpended" destination="Qid-q8-B43" id="SS4-lh-SfL"/>
                         <outlet property="titleResultLabel" destination="Car-IK-och" id="Sp5-fp-zgB"/>
                     </connections>

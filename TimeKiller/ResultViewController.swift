@@ -7,18 +7,27 @@
 //
 
 import UIKit
+import Foundation
 
-class GameOverViewController: UIViewController {
+class ResultViewController: UIViewController {
+  
+  enum GameResult {
+    case gameOver,win
+  }
+  
+
   
   var timeSession:Double!
+  var resultState:GameResult! = nil
+  var advices = ["better, go to work","better, go to read book","better, call mom","better, save the world","better, go to bed"]
 
   @IBOutlet weak var timeSpended: UILabel!
   @IBOutlet weak var adviceLabel: UILabel!
   @IBOutlet weak var titleResultLabel: UILabel!
+  @IBOutlet weak var bgView: UIView!
   
   override func viewDidLoad() {
         super.viewDidLoad()
-        timeSession = 20
         configureInfo()
         // Do any additional setup after loading the view.
     }
@@ -29,19 +38,36 @@ class GameOverViewController: UIViewController {
     }
   
   func configureInfo() {
-    self.titleResultLabel.text = "Game over".uppercased()
-    self.timeSpended.text = "\(Int(timeSession)) seconds"
-    self.adviceLabel.text = "Cходи за хлебом!".uppercased()
+    bgView.layer.masksToBounds = true
+    bgView.layer.borderWidth = 3
+    bgView.layer.borderColor = UIColor.black.cgColor
+    self.timeSpended.text = "You wasted \(Int(timeSession)) seconds"
+    createLabels()
+    
+  }
+  
+  func createLabels () {
+    switch self.resultState {
+    case .gameOver:
+      self.titleResultLabel.text = "Game over".uppercased()
+      let randomNum:Int = Int(arc4random_uniform(4))
+      print(randomNum)
+      let str = advices[randomNum]
+      self.adviceLabel.text = str.uppercased()
+      break
+    default:
+      self.titleResultLabel.text = "Win".uppercased()
+      break
+    }
   }
   
   @IBAction func menuAction(_ sender: Any) {
-    
-    
+    let startViewController = self.storyboard?.instantiateViewController(withIdentifier: "StartNavigationViewController")
+    self.present(startViewController!, animated: true, completion: nil)
   }
   
   @IBAction func tryAgainAction(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
-    
   }
   
   

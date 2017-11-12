@@ -307,19 +307,17 @@ class ViewController: UIViewController, GameStateable {
     }
     
     func onWinAction() {
-        let alertController = UIAlertController(title: "Win", message: "You win \(GameState.spended)", preferredStyle: .alert)
-        let backAction = UIAlertAction(title: "Back", style: .cancel, handler: { [weak self] (_) in
-            self?.dismiss(animated: true, completion: nil)
-        })
-        let againAction = UIAlertAction(title: "Again", style: .default, handler: { [weak self] (_) in
-            self?.setState(.start)
-        })
-        alertController.addAction(backAction)
-        alertController.addAction(againAction)
-        present(alertController, animated: true, completion: nil)
+      controllerResult(result: .win)
+//        let againAction = UIAlertAction(title: "Again", style: .default, handler: { [weak self] (_) in
+//            self?.setState(.start)
+//        })
+//        alertController.addAction(backAction)
+//        alertController.addAction(againAction)
+//        present(alertController, animated: true, completion: nil)
     }
     
     func onLooseAction() {
+      controllerResult(result: .gameOver)
 //        let alertController = UIAlertController(title: "Loose", message: "Game over \(GameState.spended)", preferredStyle: .alert)
 //        let backAction = UIAlertAction(title: "Back", style: .cancel, handler: { [weak self] (_) in
 //            self?.dismiss(animated: true, completion: nil)
@@ -329,11 +327,15 @@ class ViewController: UIViewController, GameStateable {
 //        })
 //        alertController.addAction(backAction)
 //        alertController.addAction(againAction)
-      
-      let gameOverViewController = self.storyboard?.instantiateViewController(withIdentifier: String.init(describing: GameOverViewController.self)) as! GameOverViewController
-          gameOverViewController.timeSession = GameState.spended
-          present(gameOverViewController, animated: true, completion: nil)
     }
+  
+  func controllerResult(result:ResultViewController.GameResult) {
+    let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+    let gameOverViewController = storyBoard.instantiateViewController(withIdentifier: String.init(describing: ResultViewController.self)) as! ResultViewController
+    gameOverViewController.timeSession = GameState.spended
+    gameOverViewController.resultState = result
+    present(gameOverViewController, animated: true, completion: nil)
+  }
     
     func fireClock() {
         var actions: [(side: Side, isKiller: Bool)] = []
