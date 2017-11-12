@@ -73,14 +73,13 @@ class GameState {
     private static func checkState() {
         switch state {
         case .start:
-            timeSpended = 3
+            timeSpended = 0
             startTime = Date().timeIntervalSince1970
             countdownTime = 3
             setState(to: .countdown)
         case .countdown:
             if countdownTime > 0 {
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
-                    timeSpended += 1
                     countdownTime -= 1
                     setState(to: .countdown)
                     timer.invalidate()
@@ -110,6 +109,7 @@ class GameState {
             
             gameTimer?.invalidate()
         case .continue:
+            startTime = Date().timeIntervalSince1970
             setState(to: .started)
         default:
             break
@@ -420,7 +420,7 @@ class ViewController: UIViewController, GameStateable {
     }
     
     @objc func forcePauseAction() {
-        
+        setState(.paused)
     }
     
     override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {
