@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sUw-xz-P4T">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GodzillaRegular.ttf">
+            <string>Godzilla-</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Jpr-Qj-nGB">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="sUw-xz-P4T" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qb4-vQ-KgQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2Of-dk-eTB" kind="relationship" relationship="rootViewController" id="dKy-vW-tM5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o31-e0-Phr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-474" y="-236"/>
+        </scene>
+        <!--Start View Controller-->
+        <scene sceneID="43r-gD-v1F">
+            <objects>
+                <viewController storyboardIdentifier="StartViewController" id="2Of-dk-eTB" customClass="StartViewController" customModule="TimeKiller" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I04-mx-wYy">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVi-Ko-bPR">
+                                <rect key="frame" x="5" y="5" width="558" height="310"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Wasted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Px-MI-ifi">
+                                <rect key="frame" x="205" y="25" width="159" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqF-y8-YNA">
+                                <rect key="frame" x="209" y="252" width="150" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="zFN-BE-1l1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="30"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStartButton:" destination="2Of-dk-eTB" eventType="touchUpInside" id="qDe-HF-GBJ"/>
+                                    <segue destination="r7V-U1-O9D" kind="show" id="eSc-ZP-aIf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VK-jC-lXv">
+                                <rect key="frame" x="261" y="109.5" width="47.5" height="101"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GJ-WB-6CU">
+                                <rect key="frame" x="328.5" y="145" width="40.5" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4VK-jC-lXv" firstAttribute="centerY" secondItem="I04-mx-wYy" secondAttribute="centerY" id="7Fc-Qc-f40"/>
+                            <constraint firstItem="7GJ-WB-6CU" firstAttribute="leading" secondItem="4VK-jC-lXv" secondAttribute="trailing" constant="20" id="EUh-YP-gLq"/>
+                            <constraint firstItem="IqF-y8-YNA" firstAttribute="centerX" secondItem="I04-mx-wYy" secondAttribute="centerX" id="GXD-es-ojX"/>
+                            <constraint firstItem="IVi-Ko-bPR" firstAttribute="top" secondItem="uEp-pv-Wkd" secondAttribute="top" constant="5" id="IXp-ap-Z7s"/>
+                            <constraint firstItem="6Px-MI-ifi" firstAttribute="top" secondItem="uEp-pv-Wkd" secondAttribute="top" constant="25" id="KgJ-B5-HU0"/>
+                            <constraint firstItem="uEp-pv-Wkd" firstAttribute="bottom" secondItem="IqF-y8-YNA" secondAttribute="bottom" constant="25" id="PWV-42-UFe"/>
+                            <constraint firstItem="7GJ-WB-6CU" firstAttribute="centerY" secondItem="4VK-jC-lXv" secondAttribute="centerY" id="SDq-hd-sYF"/>
+                            <constraint firstItem="uEp-pv-Wkd" firstAttribute="trailing" secondItem="IVi-Ko-bPR" secondAttribute="trailing" constant="5" id="dfR-fn-QNA"/>
+                            <constraint firstItem="6Px-MI-ifi" firstAttribute="centerX" secondItem="I04-mx-wYy" secondAttribute="centerX" id="flf-6S-Rz3"/>
+                            <constraint firstItem="IVi-Ko-bPR" firstAttribute="leading" secondItem="uEp-pv-Wkd" secondAttribute="leading" constant="5" id="o0Z-Hq-p7P"/>
+                            <constraint firstItem="4VK-jC-lXv" firstAttribute="centerX" secondItem="I04-mx-wYy" secondAttribute="centerX" id="rNq-1b-pgc"/>
+                            <constraint firstItem="uEp-pv-Wkd" firstAttribute="bottom" secondItem="IVi-Ko-bPR" secondAttribute="bottom" constant="5" id="wZ0-ad-1bL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uEp-pv-Wkd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q3f-FG-eNN"/>
+                    <connections>
+                        <outlet property="bgView" destination="IVi-Ko-bPR" id="ccV-gJ-Ihg"/>
+                        <outlet property="startButton" destination="IqF-y8-YNA" id="t9p-xO-Wud"/>
+                        <outlet property="timeCountLabel" destination="4VK-jC-lXv" id="l2y-Vu-R1o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rRt-Ui-FLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="270.31484257871068" y="-236"/>
+        </scene>
+        <!--Choose Mode View Controller-->
+        <scene sceneID="r16-3k-VxF">
+            <objects>
+                <viewController storyboardIdentifier="ChooseModeViewController" id="r7V-U1-O9D" customClass="ChooseModeViewController" customModule="TimeKiller" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BL0-2I-UuK">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txN-dt-gAI">
+                                <rect key="frame" x="5" y="5" width="558" height="310"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-AM-OxB">
+                                        <rect key="frame" x="30" y="14.5" width="50" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="UbV-mX-Uuc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="30"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBack:" destination="r7V-U1-O9D" eventType="touchUpInside" id="zaC-pF-5bg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dj8-AM-OxB" firstAttribute="leading" secondItem="txN-dt-gAI" secondAttribute="leading" constant="30" id="Vhr-eT-sJG"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="nsG-Wo-OWo">
+                                <rect key="frame" x="159" y="110" width="250" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frf-ua-Vyo">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="cz6-g2-bn6"/>
+                                        </constraints>
+                                        <state key="normal" image="classic_mode"/>
+                                        <connections>
+                                            <action selector="onClassicMode:" destination="r7V-U1-O9D" eventType="touchUpInside" id="Pq7-Zw-TQ5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqa-a7-LyA">
+                                        <rect key="frame" x="150" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="tyS-X8-zFa"/>
+                                        </constraints>
+                                        <state key="normal" image="time_mode"/>
+                                        <connections>
+                                            <action selector="onTimeMode:" destination="r7V-U1-O9D" eventType="touchUpInside" id="cEF-TP-1cr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="WHZ-vq-Yxt"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAU-nn-kbF">
+                                <rect key="frame" x="169" y="220" width="80" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucx-IT-ol9">
+                                <rect key="frame" x="337.5" y="220" width="43" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vm-xb-35n">
+                                <rect key="frame" x="204.5" y="25" width="159.5" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eAU-nn-kbF" firstAttribute="centerX" secondItem="Frf-ua-Vyo" secondAttribute="centerX" id="2JS-xX-7A1"/>
+                            <constraint firstItem="dj8-AM-OxB" firstAttribute="centerY" secondItem="7Vm-xb-35n" secondAttribute="centerY" id="9lb-bc-GJi"/>
+                            <constraint firstItem="7Vm-xb-35n" firstAttribute="top" secondItem="kEB-je-CSj" secondAttribute="top" constant="25" id="Cmf-l4-TBj"/>
+                            <constraint firstItem="nsG-Wo-OWo" firstAttribute="centerX" secondItem="BL0-2I-UuK" secondAttribute="centerX" id="Dkb-lA-4LA"/>
+                            <constraint firstItem="7Vm-xb-35n" firstAttribute="centerX" secondItem="BL0-2I-UuK" secondAttribute="centerX" id="F2b-Hs-9l5"/>
+                            <constraint firstItem="kEB-je-CSj" firstAttribute="bottom" secondItem="txN-dt-gAI" secondAttribute="bottom" constant="5" id="JNx-2N-VvF"/>
+                            <constraint firstItem="Ucx-IT-ol9" firstAttribute="top" secondItem="nsG-Wo-OWo" secondAttribute="bottom" constant="10" id="V4b-tR-LxR"/>
+                            <constraint firstItem="kEB-je-CSj" firstAttribute="trailing" secondItem="txN-dt-gAI" secondAttribute="trailing" constant="5" id="dGy-Wd-4C0"/>
+                            <constraint firstItem="txN-dt-gAI" firstAttribute="top" secondItem="kEB-je-CSj" secondAttribute="top" constant="5" id="frL-5P-Vhq"/>
+                            <constraint firstItem="eAU-nn-kbF" firstAttribute="top" secondItem="nsG-Wo-OWo" secondAttribute="bottom" constant="10" id="fxD-JX-ooo"/>
+                            <constraint firstItem="txN-dt-gAI" firstAttribute="leading" secondItem="kEB-je-CSj" secondAttribute="leading" constant="5" id="hw8-16-Niy"/>
+                            <constraint firstItem="nsG-Wo-OWo" firstAttribute="centerY" secondItem="BL0-2I-UuK" secondAttribute="centerY" id="rLP-HR-Wdn"/>
+                            <constraint firstItem="Ucx-IT-ol9" firstAttribute="centerX" secondItem="Dqa-a7-LyA" secondAttribute="centerX" id="vcl-bC-UUt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kEB-je-CSj"/>
+                    </view>
+                    <connections>
+                        <outlet property="bgView" destination="txN-dt-gAI" id="Bd2-N6-kBd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sRC-Jy-9k2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981.33802816901414" y="-236.25"/>
+        </scene>
+        <!--Choose Difficulty View Controller-->
+        <scene sceneID="qlr-Oo-qvk">
+            <objects>
+                <viewController storyboardIdentifier="ChooseDifficultyViewController" id="Vmp-Wp-EYN" customClass="ChooseDifficultyViewController" customModule="TimeKiller" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SuJ-8T-c5F">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqa-O3-61w">
+                                <rect key="frame" x="5" y="5" width="558" height="310"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE0-04-dy0">
+                                        <rect key="frame" x="30" y="14.5" width="50" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="e3U-os-s6Y"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="30"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBack:" destination="Vmp-Wp-EYN" eventType="touchUpInside" id="lhR-aI-LH3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hE0-04-dy0" firstAttribute="leading" secondItem="uqa-O3-61w" secondAttribute="leading" constant="30" id="Hpn-PQ-uvx"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="4qA-4g-C6b">
+                                <rect key="frame" x="84" y="110" width="400" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkO-Ko-YqB">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="0LL-CQ-RUL"/>
+                                        </constraints>
+                                        <state key="normal" image="easy_mode"/>
+                                        <connections>
+                                            <action selector="onClassicMode:" destination="r7V-U1-O9D" eventType="touchUpInside" id="p0X-d8-iCs"/>
+                                            <action selector="onEasy:" destination="Vmp-Wp-EYN" eventType="touchUpInside" id="2UU-HL-aMW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-l3-Jsw">
+                                        <rect key="frame" x="150" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="VqZ-Zh-8T8"/>
+                                        </constraints>
+                                        <state key="normal" image="normal_mode"/>
+                                        <connections>
+                                            <action selector="onNormal:" destination="Vmp-Wp-EYN" eventType="touchUpInside" id="fb0-OD-PhJ"/>
+                                            <action selector="onTimeMode:" destination="r7V-U1-O9D" eventType="touchUpInside" id="RxR-kh-Lhv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZV-eU-Air">
+                                        <rect key="frame" x="300" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="HOh-Zs-3QA"/>
+                                        </constraints>
+                                        <state key="normal" image="hell_mode"/>
+                                        <connections>
+                                            <action selector="onHell:" destination="Vmp-Wp-EYN" eventType="touchUpInside" id="QS0-rK-8Kg"/>
+                                            <action selector="onTimeMode:" destination="r7V-U1-O9D" eventType="touchUpInside" id="sRl-EH-xmt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IlJ-uq-lTj"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EASY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFp-uA-aG8">
+                                <rect key="frame" x="110" y="220" width="49.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEll" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRh-Zn-5rz">
+                                <rect key="frame" x="413" y="220" width="43" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIy-o9-GxR">
+                                <rect key="frame" x="178" y="25" width="212" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZJ-Qi-oof">
+                                <rect key="frame" x="245.5" y="220" width="78.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Godzilla-" family="Godzilla" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TRh-Zn-5rz" firstAttribute="centerX" secondItem="cZV-eU-Air" secondAttribute="centerX" id="3mY-0V-RaQ"/>
+                            <constraint firstItem="uqa-O3-61w" firstAttribute="top" secondItem="Dex-CN-0v1" secondAttribute="top" constant="5" id="7Ow-7G-eSt"/>
+                            <constraint firstItem="EIy-o9-GxR" firstAttribute="top" secondItem="Dex-CN-0v1" secondAttribute="top" constant="25" id="Bo5-tm-HFR"/>
+                            <constraint firstItem="uqa-O3-61w" firstAttribute="leading" secondItem="Dex-CN-0v1" secondAttribute="leading" constant="5" id="Co5-hh-x8t"/>
+                            <constraint firstItem="XZJ-Qi-oof" firstAttribute="centerX" secondItem="lEf-l3-Jsw" secondAttribute="centerX" id="LRd-dD-pFT"/>
+                            <constraint firstItem="EIy-o9-GxR" firstAttribute="centerX" secondItem="SuJ-8T-c5F" secondAttribute="centerX" id="TNj-da-OcF"/>
+                            <constraint firstItem="NFp-uA-aG8" firstAttribute="top" secondItem="4qA-4g-C6b" secondAttribute="bottom" constant="10" id="aUc-8s-GPB"/>
+                            <constraint firstItem="TRh-Zn-5rz" firstAttribute="top" secondItem="4qA-4g-C6b" secondAttribute="bottom" constant="10" id="dxC-65-RUs"/>
+                            <constraint firstItem="4qA-4g-C6b" firstAttribute="centerX" secondItem="SuJ-8T-c5F" secondAttribute="centerX" id="eoK-jG-Ljr"/>
+                            <constraint firstItem="NFp-uA-aG8" firstAttribute="centerX" secondItem="AkO-Ko-YqB" secondAttribute="centerX" id="fVw-Bx-WJE"/>
+                            <constraint firstItem="Dex-CN-0v1" firstAttribute="trailing" secondItem="uqa-O3-61w" secondAttribute="trailing" constant="5" id="np4-pC-hcv"/>
+                            <constraint firstItem="hE0-04-dy0" firstAttribute="centerY" secondItem="EIy-o9-GxR" secondAttribute="centerY" id="oY1-rd-vSf"/>
+                            <constraint firstItem="Dex-CN-0v1" firstAttribute="bottom" secondItem="uqa-O3-61w" secondAttribute="bottom" constant="5" id="q0L-px-nWY"/>
+                            <constraint firstItem="XZJ-Qi-oof" firstAttribute="top" secondItem="4qA-4g-C6b" secondAttribute="bottom" constant="10" id="slI-z2-DAk"/>
+                            <constraint firstItem="4qA-4g-C6b" firstAttribute="centerY" secondItem="SuJ-8T-c5F" secondAttribute="centerY" id="tQS-Tf-n9Q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dex-CN-0v1"/>
+                    </view>
+                    <connections>
+                        <outlet property="bgView" destination="uqa-O3-61w" id="gSQ-ll-DzO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CUV-BY-eqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723.943661971831" y="-236.25"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="classic_mode" width="66" height="66"/>
+        <image name="easy_mode" width="50" height="50"/>
+        <image name="hell_mode" width="50" height="50"/>
+        <image name="normal_mode" width="50" height="50"/>
+        <image name="time_mode" width="66" height="66"/>
+    </resources>
+</document>

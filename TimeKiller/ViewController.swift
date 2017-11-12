@@ -11,6 +11,7 @@ import AudioToolbox
 
 class GameState {
     static let maxScore = 60
+    
     enum State {
         case start
         case paused

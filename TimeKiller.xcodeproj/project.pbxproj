@@ -15,6 +15,12 @@
 		A36AE9DE1FB643FE00170C57 /* TimeKillerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE9DD1FB643FE00170C57 /* TimeKillerUITests.swift */; };
 		A36AE9EC1FB713C700170C57 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE9EB1FB713C700170C57 /* TimeView.swift */; };
 		A36AE9EE1FB761E700170C57 /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE9ED1FB761E700170C57 /* FileController.swift */; };
+		E648B02B1FB877F1009CE3FE /* ChooseModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E648B02A1FB877F1009CE3FE /* ChooseModeViewController.swift */; };
+		E648B02D1FB883A4009CE3FE /* ChooseDifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E648B02C1FB883A4009CE3FE /* ChooseDifficultyViewController.swift */; };
+		E6DA4E651FB854CD0021FE56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6DA4E641FB854CD0021FE56 /* Main.storyboard */; };
+		E6DA4E681FB85F020021FE56 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DA4E671FB85F020021FE56 /* StartViewController.swift */; };
+		E6DA4E691FB860400021FE56 /* GodzillaRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6DA4E661FB856BD0021FE56 /* GodzillaRegular.ttf */; };
+		E6DA4E6B1FB86F520021FE56 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DA4E6A1FB86F520021FE56 /* TimerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,12 @@
 		A36AE9DF1FB643FE00170C57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A36AE9EB1FB713C700170C57 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		A36AE9ED1FB761E700170C57 /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
+		E648B02A1FB877F1009CE3FE /* ChooseModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseModeViewController.swift; sourceTree = "<group>"; };
+		E648B02C1FB883A4009CE3FE /* ChooseDifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDifficultyViewController.swift; sourceTree = "<group>"; };
+		E6DA4E641FB854CD0021FE56 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E6DA4E661FB856BD0021FE56 /* GodzillaRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GodzillaRegular.ttf; sourceTree = "<group>"; };
+		E6DA4E671FB85F020021FE56 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		E6DA4E6A1FB86F520021FE56 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +113,16 @@
 			children = (
 				A36AE9BD1FB643FE00170C57 /* AppDelegate.swift */,
 				A36AE9BF1FB643FE00170C57 /* ViewController.swift */,
+				E6DA4E671FB85F020021FE56 /* StartViewController.swift */,
+				E648B02A1FB877F1009CE3FE /* ChooseModeViewController.swift */,
+				E648B02C1FB883A4009CE3FE /* ChooseDifficultyViewController.swift */,
 				A36AE9C41FB643FE00170C57 /* Assets.xcassets */,
 				A36AE9C61FB643FE00170C57 /* LaunchScreen.storyboard */,
+				E6DA4E641FB854CD0021FE56 /* Main.storyboard */,
+				E6DA4E661FB856BD0021FE56 /* GodzillaRegular.ttf */,
 				A36AE9C91FB643FE00170C57 /* Info.plist */,
 				A36AE9EB1FB713C700170C57 /* TimeView.swift */,
+				E6DA4E6A1FB86F520021FE56 /* TimerManager.swift */,
 				A36AE9ED1FB761E700170C57 /* FileController.swift */,
 			);
 			path = TimeKiller;
@@ -235,6 +253,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6DA4E691FB860400021FE56 /* GodzillaRegular.ttf in Resources */,
+				E6DA4E651FB854CD0021FE56 /* Main.storyboard in Resources */,
 				A36AE9C81FB643FE00170C57 /* LaunchScreen.storyboard in Resources */,
 				A36AE9C51FB643FE00170C57 /* Assets.xcassets in Resources */,
 			);
@@ -261,10 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6DA4E681FB85F020021FE56 /* StartViewController.swift in Sources */,
 				A36AE9C01FB643FE00170C57 /* ViewController.swift in Sources */,
 				A36AE9EE1FB761E700170C57 /* FileController.swift in Sources */,
+				E6DA4E6B1FB86F520021FE56 /* TimerManager.swift in Sources */,
 				A36AE9BE1FB643FE00170C57 /* AppDelegate.swift in Sources */,
+				E648B02B1FB877F1009CE3FE /* ChooseModeViewController.swift in Sources */,
 				A36AE9EC1FB713C700170C57 /* TimeView.swift in Sources */,
+				E648B02D1FB883A4009CE3FE /* ChooseDifficultyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,8 +447,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FT5D6CX28D;
+				DEVELOPMENT_TEAM = 47ER6JWHZU;
 				INFOPLIST_FILE = TimeKiller/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vandrj.TimeKiller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -438,8 +463,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FT5D6CX28D;
+				DEVELOPMENT_TEAM = 47ER6JWHZU;
 				INFOPLIST_FILE = TimeKiller/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vandrj.TimeKiller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
