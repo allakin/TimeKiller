@@ -16,10 +16,16 @@
 ![GAME](https://ivanovdeveloper.github.io/game.png)
 
 Для того чтобы восполнить свое время, вам следует уничтожать иконки приложений.
+
 ![GAME](https://ivanovdeveloper.github.io/i@3x.png) ![GAME](https://ivanovdeveloper.github.io/logo-facebook@3x.png)
 
 Если вы уничтожите иконку с изображением часов. Ваше время отнимется.
 
+![GAME](https://ivanovdeveloper.github.io/clock@3x.png)
+
+Для того чтобы победить вам нужно полностью заполнить шкалу вашего времени.
+
+Если шкала вашего времени полностью закончиться тогда вы проиграете.
 
 
 ## Игровые режимы
