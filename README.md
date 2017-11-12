@@ -40,5 +40,5 @@
 ## Уровни сложности
 Предоставляются 3 уровня сложности **Easy** **Normal** **Hell**. 
 
-![Time Killer](https://ivanovdeveloper.github.io/Screen Shot 2017-11-12 at 4.16.46 PM.png)
+![Time Killer](https://ivanovdeveloper.github.io/Screen%20Shot%202017-11-12%20at%204.16.46%20PM.png)
 
