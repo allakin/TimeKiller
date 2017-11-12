@@ -47,13 +47,13 @@ class FileController: UIViewController, GameStateable {
     }
     
     @objc func buttonAction() {
-        let controller = ViewController.getController(gameComplexity: .hell)
+        let controller = ViewController.getController(gameComplexity: .hell, mode: .classic)
         present(controller, animated: true, completion: nil)
     }
     
     
     @objc func pauseAction() {
-        let controller = ViewController.getController(gameComplexity: .resume)
+        let controller = ViewController.getController(gameComplexity: .resume, mode: .classic)
         present(controller, animated: true, completion: nil)
     }
 }

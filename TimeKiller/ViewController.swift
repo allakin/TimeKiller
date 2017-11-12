@@ -29,6 +29,11 @@ class GameState {
         case resume
     }
     
+    enum Mode {
+        case time
+        case classic
+    }
+    
     private static var subscribers: [GameStateable] = [] {
         didSet {
             print(subscribers.count)
@@ -38,6 +43,13 @@ class GameState {
     private static var gameTimer: Timer?
     static var gameState: State {
         return state
+    }
+    private static var mode: Mode = .time
+    static var gameMode: Mode {
+        return mode
+    }
+    static func setMode(_ newMode: Mode) {
+        mode = newMode
     }
     
     static func setState(to newState: State) {
@@ -63,7 +75,9 @@ class GameState {
                 setState(to: .started)
             }
         case .started:
-            counterTime -= 1
+            if gameMode == .time {
+                counterTime -= 1
+            }
             if counterTime <= 0 {
                 setState(to: .loose)
                 return
@@ -82,6 +96,14 @@ class GameState {
             setState(to: .started)
         default:
             break
+        }
+    }
+    
+    static func iconFailed(isKiller: Bool) {
+        if isKiller {
+            counterTime -= 2
+        } else {
+            //counterTime += 1
         }
     }
     
@@ -311,6 +333,7 @@ class ViewController: UIViewController, GameStateable {
             }, completion: { (complete) in
                 if complete {
                     timeView.removeFromSuperview()
+                    GameState.iconFailed(isKiller: timeView.isKiller!)
                 }
             })
         }
@@ -328,6 +351,7 @@ class ViewController: UIViewController, GameStateable {
         })  { (complete) in
             if complete {
                 timeView.removeFromSuperview()
+                GameState.iconFailed(isKiller: timeView.isKiller!)
             }
         }
     }
@@ -348,6 +372,8 @@ class ViewController: UIViewController, GameStateable {
         }) { (complete) in
             if complete {
                 timeView.removeFromSuperview()
+                GameState.iconFailed(isKiller: timeView.isKiller!)
+                
             }
         }
     }
@@ -585,12 +611,13 @@ extension ViewController {
         return String(describing: self)
     }
     
-    static func getController(gameComplexity: GameState.Complexity) -> UIViewController {
+    static func getController(gameComplexity: GameState.Complexity, mode: GameState.Mode) -> UIViewController {
         if gameComplexity == .resume && GameState.gameState != .paused {
             assertionFailure("Use .resume only when paused")
         }
         let controller = ViewController()
         GameState.setComplexity(gameComplexity)
+        GameState.setMode(mode)
         return controller
     }
 }
