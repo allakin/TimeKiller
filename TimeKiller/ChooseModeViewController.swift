@@ -35,7 +35,6 @@ class ChooseModeViewController: UIViewController {
     func showChooseDifficulteController(mode: GameState.Mode) {
         let controller = self.storyboard?.instantiateViewController(withIdentifier: String.init(describing: ChooseDifficultyViewController.self)) as! ChooseDifficultyViewController
         controller.mode = mode
-        
         navigationController?.show(controller, sender: self)
     }
     

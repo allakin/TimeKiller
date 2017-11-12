@@ -118,6 +118,7 @@
 				E6DA4E671FB85F020021FE56 /* StartViewController.swift */,
 				E648B02A1FB877F1009CE3FE /* ChooseModeViewController.swift */,
 				E648B02C1FB883A4009CE3FE /* ChooseDifficultyViewController.swift */,
+				22F56F851FB88D3F00BFA46D /* ResultViewController.swift */,
 				A36AE9C41FB643FE00170C57 /* Assets.xcassets */,
 				A36AE9C61FB643FE00170C57 /* LaunchScreen.storyboard */,
 				E6DA4E641FB854CD0021FE56 /* Main.storyboard */,
@@ -126,7 +127,6 @@
 				A36AE9EB1FB713C700170C57 /* TimeView.swift */,
 				E6DA4E6A1FB86F520021FE56 /* TimerManager.swift */,
 				A36AE9ED1FB761E700170C57 /* FileController.swift */,
-				22F56F851FB88D3F00BFA46D /* ResultViewController.swift */,
 			);
 			path = TimeKiller;
 			sourceTree = "<group>";

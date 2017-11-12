@@ -19,7 +19,14 @@ class ResultViewController: UIViewController {
   
   var timeSession:Double!
   var resultState:GameResult! = nil
-  var advices = ["better, go to work","better, go to read book","better, call mom","better, save the world","better, go to bed"]
+  var advices = [
+    "better, go work",
+    "better, go to read book",
+    "better, call mom",
+    "better, go to the gym",
+    "better, call father",
+    "better, save the world",
+    "better, go to bed"]
 
   @IBOutlet weak var timeSpended: UILabel!
   @IBOutlet weak var adviceLabel: UILabel!
@@ -42,6 +49,10 @@ class ResultViewController: UIViewController {
     bgView.layer.borderWidth = 3
     bgView.layer.borderColor = UIColor.black.cgColor
     self.timeSpended.text = "You wasted \(Int(timeSession)) seconds"
+    let randomNum:Int = Int(arc4random_uniform(4))
+    let str = advices[randomNum]
+    self.adviceLabel.text = str.uppercased()
+    
     createLabels()
     
   }
@@ -49,15 +60,9 @@ class ResultViewController: UIViewController {
   func createLabels () {
     switch self.resultState {
     case .gameOver:
-      self.titleResultLabel.text = "Game over".uppercased()
-      let randomNum:Int = Int(arc4random_uniform(4))
-      print(randomNum)
-      let str = advices[randomNum]
-      self.adviceLabel.text = str.uppercased()
-      break
+      self.titleResultLabel.text = "Game Over".uppercased()
     default:
-      self.titleResultLabel.text = "Win".uppercased()
-      break
+      self.titleResultLabel.text = "You Win".uppercased()
     }
   }
   
