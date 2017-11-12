@@ -330,9 +330,9 @@ class ViewController: UIViewController, GameStateable {
 //        alertController.addAction(backAction)
 //        alertController.addAction(againAction)
       
-      let gameOverViewController = self.storyboard?.instantiateViewController(withIdentifier: String.init(describing: GameOverViewController.self)) as! GameOverViewController
-          gameOverViewController.timeSession = GameState.spended
-          present(gameOverViewController, animated: true, completion: nil)
+//      let gameOverViewController = self.storyboard?.instantiateViewController(withIdentifier: String.init(describing: GameOverViewController.self)) as! GameOverViewController
+//          gameOverViewController.timeSession = GameState.spended
+//          present(gameOverViewController, animated: true, completion: nil)
     }
     
     func fireClock() {
@@ -546,12 +546,14 @@ class ViewController: UIViewController, GameStateable {
     lazy var countdownLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = .systemFont(ofSize: 30)
+        label.font = UIFont.init(name: "Godzilla-", size: 100)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     lazy var pauseButton: UIButton = {
         let button = UIButton(type: .system)
+        button.titleLabel?.font = UIFont.init(name: "Godzilla-", size: 20)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.setTitle("Pause", for: .normal)
         button.addTarget(self, action: #selector(pauseAction(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -559,6 +561,8 @@ class ViewController: UIViewController, GameStateable {
     }()
     lazy var exitButton: UIButton = {
         let button = UIButton(type: .system)
+        button.titleLabel?.font = UIFont.init(name: "Godzilla-", size: 20)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.setTitle("Exit", for: .normal)
         button.addTarget(self, action: #selector(exitAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
