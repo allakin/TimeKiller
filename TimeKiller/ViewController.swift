@@ -10,6 +10,7 @@ import UIKit
 import AudioToolbox
 
 class GameState {
+    
     static let maxScore = 60
     enum State {
         case start
@@ -23,9 +24,9 @@ class GameState {
     }
     
     enum Complexity: Int {
-        case normal = 16
-        case hard = 12
-        case hell = 8
+        case normal = 20
+        case hard = 15
+        case hell = 10
         case resume
     }
     
@@ -41,6 +42,12 @@ class GameState {
     }
     private static var state: State = .none
     private static var gameTimer: Timer?
+    private static var startTime: Double = 0
+    private static var pauseTime: Double = 0
+    private static var timeSpended: Double = 0
+    static var spended: Double {
+        return timeSpended
+    }
     static var gameState: State {
         return state
     }
@@ -53,6 +60,11 @@ class GameState {
     }
     
     static func setState(to newState: State) {
+        if newState == .loose || newState == .win {
+            print(Date().timeIntervalSince1970)
+            print(startTime)
+            timeSpended += Date().timeIntervalSince1970 - startTime
+        }
         state = newState
         notificate(newState)
         checkState()
@@ -61,11 +73,14 @@ class GameState {
     private static func checkState() {
         switch state {
         case .start:
+            timeSpended = 3
+            startTime = Date().timeIntervalSince1970
             countdownTime = 3
             setState(to: .countdown)
         case .countdown:
             if countdownTime > 0 {
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
+                    timeSpended += 1
                     countdownTime -= 1
                     setState(to: .countdown)
                     timer.invalidate()
@@ -91,6 +106,8 @@ class GameState {
                 setState(to: .started)
             })
         case .paused:
+            timeSpended += Date().timeIntervalSince1970 - startTime
+            
             gameTimer?.invalidate()
         case .continue:
             setState(to: .started)
@@ -103,7 +120,7 @@ class GameState {
         if isKiller {
             counterTime -= 2
         } else {
-            //counterTime += 1
+            counterTime += 1
         }
     }
     
@@ -197,7 +214,7 @@ class ViewController: UIViewController, GameStateable {
             updateIndicator()
             fireClock()
         case .loose:
-            let alertController = UIAlertController(title: "Loose", message: "Game over", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Loose", message: "Game over \(GameState.spended)", preferredStyle: .alert)
             let backAction = UIAlertAction(title: "Back", style: .cancel, handler: { [weak self] (_) in
                 self?.dismiss(animated: true, completion: nil)
             })
@@ -208,7 +225,7 @@ class ViewController: UIViewController, GameStateable {
             alertController.addAction(againAction)
             present(alertController, animated: true, completion: nil)
         case .none:
-            startButton.isHidden = false
+            //startButton.isHidden = false
             countdownLabel.isHidden = true
             indicatorBackground.isHidden = true
             pauseButton.isHidden = true
@@ -229,7 +246,7 @@ class ViewController: UIViewController, GameStateable {
                 subView.layer.resume()
             }
         case .win:
-            let alertController = UIAlertController(title: "Win", message: "You win", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Win", message: "You win \(GameState.spended)", preferredStyle: .alert)
             let backAction = UIAlertAction(title: "Back", style: .cancel, handler: { [weak self] (_) in
                 self?.dismiss(animated: true, completion: nil)
             })
@@ -261,6 +278,13 @@ class ViewController: UIViewController, GameStateable {
         GameState.setState(to: newState)
     }
 
+    enum Side {
+        case left
+        case right
+        case bottom
+        case top
+    }
+    
     var touchStartPoint: CGPoint? {
         willSet {
             if let startPoint = newValue {
@@ -279,102 +303,98 @@ class ViewController: UIViewController, GameStateable {
     }
     
     func fireClock() {
-        if arc4random_uniform(3) > 0 {
+        var actions: [(side: Side, isKiller: Bool)] = []
+        if random(75) {
             for _ in 0...3 {
-                if arc4random_uniform(3) == 0 {
-                    fireBottom()
-                    if GameState.complexity == .hell {
-                        fireBottom()
-                    }
+                if random(75) {
+                    actions.append((side: .bottom, isKiller: random(85)))
                 }
             }
         }
         if GameState.complexity == .hard || GameState.complexity == .hell {
-            if arc4random_uniform(3) == 0 {
+            if random(50) {
                 for _ in 0...2 {
-                    if arc4random_uniform(3) == 0 {
-                        fireSide()
-                        if GameState.complexity == .hell {
-                            fireSide()
-                        }
+                    if random(50) {
+                        actions.append((random(50) ? .left : .right, random(55)))
                     }
                 }
             }
         }
         if GameState.complexity == .hell {
-            if arc4random_uniform(4) == 0 {
-                for _ in 0...2 {
-                    if arc4random_uniform(3) == 0 {
-                        fireTop()
-                        if GameState.complexity == .hell {
-                            fireTop()
-                        }
+            if random(25) {
+                for _ in 0...3 {
+                    if random(25) {
+                        actions.append((.top, random(20)))
                     }
                 }
             }
         }
+        
+        for action in actions {
+            fireIcon(side: action.side, isKiller: action.isKiller)
+        }
     }
     
-    func fireBottom() {
-        let xCoord = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width * 0.8))) + UIScreen.main.bounds.width * 0.1
-        let deltaX = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width/8))) - UIScreen.main.bounds.width / 16
-        let startPosition = CGPoint.init(x: xCoord, y: UIScreen.main.bounds.height)
-        let cp1 = CGPoint.init(x: (xCoord + deltaX), y: UIScreen.main.bounds.height / 2 - CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.height / 2))))
-        let cp2 = CGPoint.init(x: xCoord + 2 * deltaX, y: UIScreen.main.bounds.height)
-        let timeView = TimeView(frame: .init(origin: startPosition, size: .init(width: 44, height: 44)))
-        timeView.isKiller = !(0...1 ~= arc4random_uniform(10))
+    func random(_ chance: UInt32) -> Bool {
+        assert(0...100 ~= chance)
+        return 0...chance ~= arc4random_uniform(101)
+    }
+    
+    func fireIcon(side: Side, isKiller: Bool) {
+        let timeView = TimeView(frame: .init(origin: .zero, size: .init(width: 44, height: 44)))
+        timeView.isKiller = isKiller
         gameView.addSubview(timeView)
         let time = (Double(arc4random_uniform(15)) + Double(GameState.complexity.rawValue)) / 10
-        UIView.animate(withDuration: time, delay: 0, options: [.curveEaseOut, .preferredFramesPerSecond60], animations: {
-            timeView.frame.origin = cp1
-        }) { (_) in
-            UIView.animate(withDuration: time, delay: 0, options: [.curveEaseIn, .preferredFramesPerSecond60], animations: {
-                timeView.frame.origin = cp2
-            }, completion: { (complete) in
+        switch side {
+        case .bottom:
+            let xCoord = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width * 0.8))) + UIScreen.main.bounds.width * 0.1
+            let deltaX = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width/8))) - UIScreen.main.bounds.width / 16
+            let startPosition = CGPoint.init(x: xCoord, y: UIScreen.main.bounds.height)
+            let cp1 = CGPoint.init(x: (xCoord + deltaX), y: UIScreen.main.bounds.height / 2 - CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.height / 2))))
+            let cp2 = CGPoint.init(x: xCoord + 2 * deltaX, y: UIScreen.main.bounds.height)
+            
+            timeView.frame.origin = startPosition
+            UIView.animate(withDuration: time, delay: 0, options: [.curveEaseOut, .preferredFramesPerSecond60], animations: {
+                timeView.frame.origin = cp1
+            }) { (_) in
+                UIView.animate(withDuration: time, delay: 0, options: [.curveEaseIn, .preferredFramesPerSecond60], animations: {
+                    timeView.frame.origin = cp2
+                }, completion: { (complete) in
+                    if complete {
+                        timeView.removeFromSuperview()
+                        GameState.iconFailed(isKiller: timeView.isKiller!)
+                    }
+                })
+            }
+        case .top:
+            let xCoord = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width * 0.8))) +  UIScreen.main.bounds.width * 0.1
+            let deltaX = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width/8))) - UIScreen.main.bounds.width / 16
+            timeView.frame.origin = CGPoint(x: xCoord, y: -44)
+            UIView.animate(withDuration: time * 0.8, delay: time * 0.2, options: [.beginFromCurrentState, .curveEaseIn], animations: {
+                timeView.frame.origin = .init(x: xCoord + deltaX, y: UIScreen.main.bounds.height)
+            })  { (complete) in
                 if complete {
                     timeView.removeFromSuperview()
                     GameState.iconFailed(isKiller: timeView.isKiller!)
                 }
+            }
+        case .left: fallthrough
+        case .right:
+            let yCoord = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.height * 0.5)))
+            let deltaX = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width * 0.4))) +  UIScreen.main.bounds.width * 0.4
+            timeView.frame.origin = CGPoint(x: (side == .left ? -44 : UIScreen.main.bounds.width), y: yCoord)
+            UIView.animate(withDuration: time, delay: 0, options: [.curveEaseOut, .preferredFramesPerSecond60], animations: {
+                timeView.frame.origin = .init(x: (side == .left ? deltaX : UIScreen.main.bounds.width - deltaX), y: 0)
             })
-        }
-    }
-    
-    func fireTop() {
-        let xCoord = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width * 0.8))) +  UIScreen.main.bounds.width * 0.1
-        let deltaX = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width/8))) - UIScreen.main.bounds.width / 16
-        let timeView = TimeView(frame: .init(x: xCoord, y: -44, width: 44, height: 44))
-        timeView.isKiller = !(0...7 ~= arc4random_uniform(10))
-        gameView.addSubview(timeView)
-        let time = (Double(arc4random_uniform(15)) + Double(GameState.complexity.rawValue)) / 10
-        UIView.animate(withDuration: time * 0.8, delay: time * 0.2, options: [.beginFromCurrentState, .curveEaseIn], animations: {
-            timeView.frame.origin = .init(x: xCoord + deltaX, y: UIScreen.main.bounds.height)
-        })  { (complete) in
-            if complete {
-                timeView.removeFromSuperview()
-                GameState.iconFailed(isKiller: timeView.isKiller!)
+            UIView.animate(withDuration: time * 0.8, delay: time * 0.2, options: [.beginFromCurrentState, .curveEaseIn], animations: {
+                timeView.frame.origin = .init(x: (side == .left ? deltaX : UIScreen.main.bounds.width - deltaX), y: UIScreen.main.bounds.height)
+            }) { (complete) in
+                if complete {
+                    timeView.removeFromSuperview()
+                    GameState.iconFailed(isKiller: timeView.isKiller!)
+                }
             }
-        }
-    }
-    
-    func fireSide() {
-        let yCoord = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.height * 0.5)))
-        let deltaX = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width * 0.4))) +  UIScreen.main.bounds.width * 0.4
-        let isLeft = arc4random_uniform(2) == 0
-        let timeView = TimeView(frame: CGRect.init(x: (isLeft ? -44 : UIScreen.main.bounds.width), y: yCoord, width: 44, height: 44))
-        timeView.isKiller = !(0...4 ~= arc4random_uniform(10))
-        gameView.addSubview(timeView)
-        let time = (Double(arc4random_uniform(15)) + Double(GameState.complexity.rawValue)) / 10
-        UIView.animate(withDuration: time, delay: 0, options: [.curveEaseOut, .preferredFramesPerSecond60], animations: {
-            timeView.frame.origin = .init(x: (isLeft ? deltaX : UIScreen.main.bounds.width - deltaX), y: 0)
-        })
-        UIView.animate(withDuration: time * 0.8, delay: time * 0.2, options: [.beginFromCurrentState, .curveEaseIn], animations: {
-            timeView.frame.origin = .init(x: (isLeft ? deltaX : UIScreen.main.bounds.width - deltaX), y: UIScreen.main.bounds.height)
-        }) { (complete) in
-            if complete {
-                timeView.removeFromSuperview()
-                GameState.iconFailed(isKiller: timeView.isKiller!)
-                
-            }
+            break
         }
     }
 
@@ -389,16 +409,18 @@ class ViewController: UIViewController, GameStateable {
         super.viewDidLoad()
         addPanGestureRecognizer()
         addDisplayLink()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        
         GameState.subscribe(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(forcePauseAction), name: Notification.Name.UIApplicationWillResignActive, object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GameState.unsubscribe(self)
+        setState(.start)
+    }
+    
+    @objc func forcePauseAction() {
+        
     }
     
     override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {
@@ -504,6 +526,7 @@ class ViewController: UIViewController, GameStateable {
     lazy var startButton: UIButton = { [weak self] in
         let button = UIButton(type: .system)
         button.setTitle("Start", for: .normal)
+        button.isHidden = true
         button.addTarget(self, action: #selector(startAction(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -543,6 +566,11 @@ class ViewController: UIViewController, GameStateable {
         return view
     }()
     var indicatorConstraint: NSLayoutConstraint!
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        GameState.unsubscribe(self)
+    }
 }
 
 // MARK: - UI creation
