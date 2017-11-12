@@ -36,7 +36,7 @@ class ChooseDifficultyViewController: UIViewController {
     }
     
     @IBAction func onNormal(_ sender: Any) {
-   showGameController(complexity: GameState.Complexity.hard)
+        showGameController(complexity: GameState.Complexity.hard)
     }
     
     @IBAction func onHell(_ sender: Any) {
@@ -44,7 +44,8 @@ class ChooseDifficultyViewController: UIViewController {
     }
     
     func showGameController(complexity: GameState.Complexity) {
-        
+        let controller = ViewController.getController(gameComplexity: complexity, mode: mode)
+        present(controller, animated: true, completion: nil)
     }
     
     /*
