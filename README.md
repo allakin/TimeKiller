@@ -1,6 +1,10 @@
 # Eva Team
 ![EVA TEAM](https://ivanovdeveloper.github.io/Eva%20logo.png)
 
+E - Eugene Yatsenko
+V - Vladimir Andrienko
+A - Andrey Ivanov
+
 # Time Killer
 ![Time Killer](https://ivanovdeveloper.github.io/Icon-180.png)
 
