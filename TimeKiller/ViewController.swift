@@ -214,16 +214,7 @@ class ViewController: UIViewController, GameStateable {
             updateIndicator()
             fireClock()
         case .loose:
-            let alertController = UIAlertController(title: "Loose", message: "Game over \(GameState.spended)", preferredStyle: .alert)
-            let backAction = UIAlertAction(title: "Back", style: .cancel, handler: { [weak self] (_) in
-                self?.dismiss(animated: true, completion: nil)
-            })
-            let againAction = UIAlertAction(title: "Again", style: .default, handler: { [weak self] (_) in
-                self?.setState(.start)
-            })
-            alertController.addAction(backAction)
-            alertController.addAction(againAction)
-            present(alertController, animated: true, completion: nil)
+            onLooseAction()
         case .none:
             //startButton.isHidden = false
             countdownLabel.isHidden = true
@@ -246,16 +237,7 @@ class ViewController: UIViewController, GameStateable {
                 subView.layer.resume()
             }
         case .win:
-            let alertController = UIAlertController(title: "Win", message: "You win \(GameState.spended)", preferredStyle: .alert)
-            let backAction = UIAlertAction(title: "Back", style: .cancel, handler: { [weak self] (_) in
-                self?.dismiss(animated: true, completion: nil)
-            })
-            let againAction = UIAlertAction(title: "Again", style: .default, handler: { [weak self] (_) in
-                self?.setState(.start)
-            })
-            alertController.addAction(backAction)
-            alertController.addAction(againAction)
-            present(alertController, animated: true, completion: nil)
+            onWinAction()
         }
     }
     
@@ -300,6 +282,53 @@ class ViewController: UIViewController, GameStateable {
                 pointerView.removeFromSuperview()
             }
         }
+    }
+
+    // MARK: - Life cycle
+    
+    override func loadView() {
+        super.loadView()
+        createUI()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addPanGestureRecognizer()
+        addDisplayLink()
+        
+        GameState.subscribe(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(forcePauseAction), name: Notification.Name.UIApplicationWillResignActive, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setState(.start)
+    }
+    
+    func onWinAction() {
+        let alertController = UIAlertController(title: "Win", message: "You win \(GameState.spended)", preferredStyle: .alert)
+        let backAction = UIAlertAction(title: "Back", style: .cancel, handler: { [weak self] (_) in
+            self?.dismiss(animated: true, completion: nil)
+        })
+        let againAction = UIAlertAction(title: "Again", style: .default, handler: { [weak self] (_) in
+            self?.setState(.start)
+        })
+        alertController.addAction(backAction)
+        alertController.addAction(againAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func onLooseAction() {
+        let alertController = UIAlertController(title: "Loose", message: "Game over \(GameState.spended)", preferredStyle: .alert)
+        let backAction = UIAlertAction(title: "Back", style: .cancel, handler: { [weak self] (_) in
+            self?.dismiss(animated: true, completion: nil)
+        })
+        let againAction = UIAlertAction(title: "Again", style: .default, handler: { [weak self] (_) in
+            self?.setState(.start)
+        })
+        alertController.addAction(backAction)
+        alertController.addAction(againAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     func fireClock() {
@@ -396,27 +425,6 @@ class ViewController: UIViewController, GameStateable {
             }
             break
         }
-    }
-
-    // MARK: - Life cycle
-    
-    override func loadView() {
-        super.loadView()
-        createUI()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addPanGestureRecognizer()
-        addDisplayLink()
-        
-        GameState.subscribe(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(forcePauseAction), name: Notification.Name.UIApplicationWillResignActive, object: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setState(.start)
     }
     
     @objc func forcePauseAction() {
