@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22F56F861FB88D3F00BFA46D /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F56F851FB88D3F00BFA46D /* GameOverViewController.swift */; };
 		A36AE9BE1FB643FE00170C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE9BD1FB643FE00170C57 /* AppDelegate.swift */; };
 		A36AE9C01FB643FE00170C57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE9BF1FB643FE00170C57 /* ViewController.swift */; };
 		A36AE9C51FB643FE00170C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36AE9C41FB643FE00170C57 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22F56F851FB88D3F00BFA46D /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		A36AE9BA1FB643FE00170C57 /* TimeKiller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeKiller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36AE9BD1FB643FE00170C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A36AE9BF1FB643FE00170C57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				A36AE9EB1FB713C700170C57 /* TimeView.swift */,
 				E6DA4E6A1FB86F520021FE56 /* TimerManager.swift */,
 				A36AE9ED1FB761E700170C57 /* FileController.swift */,
+				22F56F851FB88D3F00BFA46D /* GameOverViewController.swift */,
 			);
 			path = TimeKiller;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				E648B02B1FB877F1009CE3FE /* ChooseModeViewController.swift in Sources */,
 				A36AE9EC1FB713C700170C57 /* TimeView.swift in Sources */,
 				E648B02D1FB883A4009CE3FE /* ChooseDifficultyViewController.swift in Sources */,
+				22F56F861FB88D3F00BFA46D /* GameOverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47ER6JWHZU;
+				DEVELOPMENT_TEAM = 34SL6966R8;
 				INFOPLIST_FILE = TimeKiller/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -463,7 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47ER6JWHZU;
+				DEVELOPMENT_TEAM = 34SL6966R8;
 				INFOPLIST_FILE = TimeKiller/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
