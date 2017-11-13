@@ -1,6 +1,6 @@
 **Video Presentation**
 https://youtu.be/nc3DzSk8qVo
-[![IMAGE ALT TEXT HERE](https://ivanovdeveloper.github.io/Screen%20Shot%202017-11-12%20at%204.28.22%20PM.png)](https://youtu.be/nc3DzSk8qVo)
+[![IMAGE ALT TEXT HERE](https://ivanovdeveloper.github.io/game.png)](https://youtu.be/nc3DzSk8qVo)
 
 # Eva Team
 ![EVA TEAM](https://ivanovdeveloper.github.io/Eva%20logo.png)
