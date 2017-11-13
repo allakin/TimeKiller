@@ -1,3 +1,6 @@
+**Вы можете попробовать игру перейдя по ссылке**
+https://appetize.io/app/bpxx24feutyax4y9yz77jegarw?device=iphone6s&scale=75&orientation=landscape&osVersion=11.1
+
 **Video Presentation**
 https://youtu.be/nc3DzSk8qVo
 [![IMAGE ALT TEXT HERE](https://ivanovdeveloper.github.io/game.png)](https://youtu.be/nc3DzSk8qVo)
