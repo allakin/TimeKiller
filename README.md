@@ -1,8 +1,8 @@
 **Вы можете попробовать игру перейдя по ссылке**
 [Time Killer](https://appetize.io/app/ju5rqhqw76je8j5ep37j4t0870?device=iphone6s&scale=75&orientation=landscape&osVersion=11.1)
 
-**Video Presentation**
-https://youtu.be/nc3DzSk8qVo
+**Наша видео призентация**
+[EVA Team Present 'Time Killer'](https://youtu.be/nc3DzSk8qVo)
 [![IMAGE ALT TEXT HERE](https://ivanovdeveloper.github.io/game.png)](https://youtu.be/nc3DzSk8qVo)
 
 # Eva Team
