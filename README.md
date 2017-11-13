@@ -1,5 +1,5 @@
 **Вы можете попробовать игру перейдя по ссылке**
-https://appetize.io/app/bpxx24feutyax4y9yz77jegarw?device=iphone6s&scale=75&orientation=landscape&osVersion=11.1
+[Time Killer](https://appetize.io/app/ju5rqhqw76je8j5ep37j4t0870?device=iphone6s&scale=75&orientation=landscape&osVersion=11.1)
 
 **Video Presentation**
 https://youtu.be/nc3DzSk8qVo
